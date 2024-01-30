@@ -6,28 +6,39 @@ input:focus::placeholder {
   color: transparent;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Arial', sans-serif;
+  position: relative;
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f4f4f4;
   color: #333;
-  transition: background-color 0.4s, color 0.4s;
+  
 }
 
 header,
 footer {
   padding: 15px;
   text-align: center;
-  transition: background-color 0.3s;
 }
 
 header {
   background-color: rgba(0, 51, 102, 0.96);
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,6 +56,16 @@ header img {
   align-items: center;
 }
 
+.button-container-feedback {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+h1 {
+  margin: auto;
+}
+
 .theme-toggle,
 .login-button {
   background-color: #003366;
@@ -54,7 +75,6 @@ header img {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
 }
 
 .theme-toggle:hover,
@@ -64,25 +84,30 @@ header img {
 
 footer {
   margin-top: auto;
-  color: #fff;
+  color: #e8e8e8;  
   background-color: rgba(0, 51, 102, 0.96);
-  margin-top: 15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 main {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   width: 100%;
   max-width: 800px;
-  margin: 0 auto 60px;
-  background: #f2f2f2;
+  margin: 30px auto 60px; 
+  background: #011f40;
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s;
 }
+
 
 .container {
   margin: 0 auto;
+  background-color: #011f40;
 }
 
 form {
@@ -127,7 +152,6 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 18px;
-  transition: background-color 0.3s;
   margin: 0 auto;
   margin-top: 20px;
   display: block;
@@ -144,23 +168,38 @@ footer p {
 body.dark-theme {
   background-image: url('../Images/Dark-Mode.jpg');
   background-color: #333;
-  transition: background-color 0.4s;
   color: #fff;
+}
+
+body.dark-theme .container {
+  background-color: #fff; 
+}
+
+body.dark-theme main {
+  background: #fff;
 }
 
 header.dark-theme {
   background-color: #111;
 }
 
+body.dark-theme h1 {
+  color: #252525; 
+}
+
 main.dark-theme {
   background-color: #222;
+  background: #fff;
 }
 
 body.light-theme {
   background-image: url('../images/Light-Mode.jpg');
   background-color: #f4f4f4;
-  color: #333;
-  transition: background-color 0.4s;
+  color: #fff;
+}
+
+body.light-theme label {
+  color: #fff; 
 }
 
 header.light-theme {
@@ -213,5 +252,97 @@ button {
 }
 
 button:hover {
+  background-color: #001f3f;
+}
+
+#contactCheckboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+#contactCheckboxContainer label {
+ white-space: nowrap;
+ overflow-wrap: break-word;
+ display: flex;
+  align-items: center; 
+  margin-right: 10px;
+  color: #003366;
+}
+
+#contactCheckboxContainer input[type="checkbox"]
+{
+ margin-bottom: 60px;
+ position: relative;
+ top: 28px; 
+ right: 300px;
+}
+
+#acceptCheckbox {
+  position: relative;
+  bottom: 23px;
+  right: 150px;
+}
+
+#loginPopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 2px solid #003366;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+#loginPopup .close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: #003366;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+#loginPopup .close-button:hover {
+  color: #001f3f;
+}
+
+#loginPopup label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #003366;
+}
+
+#loginPopup input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #003366;
+  border-radius: 4px;
+}
+
+#loginPopup button {
+  background-color: #003366;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: block;
+}
+
+#loginPopup button:hover {
   background-color: #001f3f;
 }
