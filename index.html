@@ -7,6 +7,8 @@
   <title>Mercantec - Feedback</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="stylesheet" href="CSS/style.css">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body class="dark-theme">
@@ -14,8 +16,11 @@
   <header>
     <img src="images/Mercantec-Logo.png" alt="Mercantec Logo">
     <div class="button-container">
-      <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()">Light Mode</button>
-      <button type="button" id="loginButton" class="login-button" onclick="showLoginPopup()">Login</button>
+      <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()">
+        <ion-icon name="contrast-outline"></ion-icon> 
+      </button>
+      <button type="button" id="loginButton" class="login-button" onclick="showLoginPopup()">
+        <ion-icon name="enter-outline"></ion-icon></button>
     </div>
   </header>
 
@@ -27,6 +32,7 @@
 
         <label for="subject">Kategori</label>
         <select id="subject" name="subject" required>
+          <option value="" disabled selected hidden>Vælg en kategori</option>
           <option value="Funktionalitet">Funktionalitet</option>
           <option value="Indhold">Indhold</option>
           <option value="Design">Design</option>
@@ -34,6 +40,7 @@
           <option value="Sikkerhed">Sikkerhed</option>
           <option value="Andet">Andet</option>
         </select>
+        
 
         <label for="feedback">Feedback-besked</label>
         <textarea id="feedback" name="feedback" placeholder="Skriv din besked" rows="8" required></textarea>
@@ -66,13 +73,12 @@
 
   <!-- Login Popup -->
   <div id="loginPopup" class="popup">
-    <span class="popup-message" id="loginPopupMessage">Log ind</span>
     <button class="close-button" onclick="hideLoginPopup()">&times;</button>
     <form id="loginForm">
-      <label for="username">Brugernavn:</label>
+      <label for="username">Brugernavn</label>
       <input type="text" id="username" name="username" required>
 
-      <label for="password">Kodeord:</label>
+      <label for="password">Adgangskode</label>
       <input type="password" id="password" name="password" required>
 
       <button type="button" onclick="submitLoginForm()">Log ind</button>

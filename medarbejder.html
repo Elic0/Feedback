@@ -1,31 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mercantec - Feedback</title>
+  <title>Mercantec - Medarbejder</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="stylesheet" href="CSS/medarbejer.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+ <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body class="dark-theme">
 
   <header>
-    <img src="images/Mercantec-Logo.png" alt="Mercantec Logo">
-    <div class="button-container">
-      <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()">Light Mode</button>
-      <button type="button" id="loginButton" class="login-button" onclick="showLoginPopup()">Login</button>
-    </div>
+    <nav>
+      <img src="images/Mercantec-Logo.png" alt="Mercantec Logo">
+      <div class="button-container">
+        <button type="button" id="loginButton" class="login-button" onclick="redirectIndex()()">
+          <ion-icon name="exit-outline"></ion-icon></button>
+      </div>
+    </nav>
   </header>
 
+  <main>
+    <section class="projects-section">
+      <h1>Dine Projekter</h1>
+      <hr class="underline">
+      <h2>Greenweld.org</h2>
+      <h2>Hjemmeside-2</h2>
+      <h2>Hjemmeside-3</h2>
+      <h2>Hjemmeside-4</h2>
+      <h2>Hjemmeside-5</h2>
+      <h2>Hjemmeside-6</h2>
+      <h2>Hjemmeside-7</h2>
+      <h2>Hjemmeside-8</h2>
+    </section>
 
+    <section class="statistics-section">
+      <h1>Statistiker</h1>
+      <hr class="underline">
+      <h2>Nye feedback:</h2>
+      <h2>0</h2>
+      <h2>Feedback i alt:</h2>
+      <h2>32</h2>
+      <h2>Projekter i alt:</h2>
+      <h2>7</h2>
+    </section>
 
-  <footer>
-    <p>H.C.Andersensvej 9, 8800 • Tlf. +45 89 50 33 00 • Mercantec@Mercantec.dk</p> <p>&copy; 2024 Mercantec</p>
-  </footer>
+    <section class="soc-projects-section">
+      <h1>SOC Projekter</h1>
+      <hr class="underline">
+      <h2>Hjemmeside-1</h2>
+      <h2>Hjemmeside-2</h2>
+      <h2>Hjemmeside-3</h2>
+      <h2>Hjemmeside-4</h2>
+      <h2>Hjemmeside-5</h2>
+      <h2>Hjemmeside-6</h2>
+      <h2>Hjemmeside-7</h2>
+      <h2>Hjemmeside-8</h2>
+    </section>
+  </main>
 
-  <script src="Javascript/script.js"></script>
+  <script src="Javascript/medarbejder.js"></script>
 </body>
 
 </html>

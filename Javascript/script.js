@@ -3,6 +3,7 @@ function submitFeedback() {
   const email = document.getElementById('email').value;
   const subject = document.getElementById('subject').value;
   const feedback = document.getElementById('feedback').value;
+  const form = document.getElementById('feedbackForm');
 
   // Pop-up (Hvis nogle felter ikke er udfyldt)
   if (subject === "") {
@@ -20,6 +21,21 @@ function submitFeedback() {
   }
 
   displayPopup("Tak for din feedback!");
+
+  // Nulstil formular
+  resetForm();
+}
+
+// Nulstil formular
+function resetForm() {
+  const form = document.getElementById('feedbackForm');
+  form.reset(); // Nulstil alle inputfelter
+
+  // Nulstil kontaktcheckbox
+  const contactCheckbox = document.getElementById('contactCheckbox');
+  if (contactCheckbox) {
+    contactCheckbox.checked = false;
+  }
 }
 
 // Viser popup funktionen
@@ -42,7 +58,6 @@ function closePopup() {
   popup.style.display = 'none';
 }
 
-
 // Dark & Light mode 
 function toggleTheme() {
   const body = document.body;
@@ -51,8 +66,9 @@ function toggleTheme() {
   body.classList.toggle('dark-theme');
   body.classList.toggle('light-theme');
 
-  themeToggle.innerText = body.classList.contains('dark-theme') ? 'Light Mode' : 'Dark Mode';
+  themeToggle.innerHTML = body.classList.contains('dark-theme') ? '<ion-icon name="contrast-outline"></ion-icon>' : '<ion-icon name="contrast-outline"></ion-icon>';
 }
+
 
 // Bestemmer om email-checkbox kommer op eller ej
 function toggleContactCheckbox() {
@@ -75,6 +91,85 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.getElementById('imageInput').addEventListener('change', handleImageInput);
+
+function handleImageInput() {
+  const imageInput = document.getElementById('imageInput');
+  const attachedImageContainer = document.getElementById('attachedImageContainer');
+
+  const selectedImage = imageInput.files[0];
+
+  if (selectedImage) {
+    const imageUrl = URL.createObjectURL(selectedImage);
+    
+    console.log("Attached Image URL:", imageUrl);
+  }
+}
+
+// Submit login form
+function submitLoginForm() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Check username and password
+  if (username === "admin" && password === "MercAdmin123") {
+    // Redirect to medarbejder.html if credentials are correct
+    window.location.href = 'medarbejder.html';
+  } else {
+    // Display error message if credentials are incorrect
+    displayPopup("Forkert brugernavn eller adgangskode.");
+    focusLoginInput();
+  }
+}
+
+// Fokus på login inputfelt
+function focusLoginInput() {
+  document.getElementById('username').focus();
+}
+
+// Viser popup funktionen
+function displayPopup(message) {
+  const popup = document.getElementById('popup');
+  const popupMessage = document.getElementById('popupMessage');
+
+  popupMessage.textContent = message;
+  popup.style.display = 'block';
+  popup.style.zIndex = '1000'; // Sæt z-index for at sikre, at popupen vises foran login-popupen
+
+  // Lukker automatisk popup efter 3 sekunder
+  setTimeout(function () {
+    closePopup();
+  }, 3000);
+}
+
+// Luk popup funktion
+function closePopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'none';
+}
+
+// Popup for login
+function showLoginPopup() {
+  const loginPopup = document.getElementById('loginPopup');
+  loginPopup.style.display = 'block';
+}
+
+function hideLoginPopup() {
+  const loginPopup = document.getElementById('loginPopup');
+  loginPopup.style.display = 'none';
+}
+
+document.getElementById('loginButton').addEventListener('click', showLoginPopup);
+document.getElementById('loginPopup').querySelector('button').addEventListener('click', hideLoginPopup);
+
+// Event for formen bliver sendt 
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('feedbackForm');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    submitFeedback();
+  });
+});
 
 document.getElementById('imageInput').addEventListener('change', handleImageInput);
 
@@ -91,17 +186,8 @@ function handleImageInput() {
   }
 }
 
-
-//Popup for login
-function showLoginPopup() {
-  const loginPopup = document.getElementById('loginPopup');
-  loginPopup.style.display = 'block';
+//Redirecter fra normal side til medarbejder side
+function redirectMedarbejder() {
+  window.location.href = 'medarbejder.html';
 }
 
-function hideLoginPopup() {
-  const loginPopup = document.getElementById('loginPopup');
-  loginPopup.style.display = 'none';
-}
-
-document.getElementById('loginButton').addEventListener('click', showLoginPopup);
-document.getElementById('loginPopup').querySelector('button').addEventListener('click', hideLoginPopup);
