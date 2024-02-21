@@ -61,13 +61,20 @@ function closePopup() {
 // Dark & Light mode 
 function toggleTheme() {
   const body = document.body;
-  const themeToggle = document.querySelector('.theme-toggle');
+  const themeToggle = document.getElementById('themeToggle');
+  const icon = themeToggle.querySelector('i');
 
   body.classList.toggle('dark-theme');
   body.classList.toggle('light-theme');
 
-  themeToggle.innerHTML = body.classList.contains('dark-theme') ? '<ion-icon name="contrast-outline"></ion-icon>' : '<ion-icon name="contrast-outline"></ion-icon>';
+  if (body.classList.contains('dark-theme')) {
+    icon.className = 'gg-sun'; 
+  } else {
+    icon.className = 'gg-moon'; 
+  }
 }
+
+
 
 
 // Bestemmer om email-checkbox kommer op eller ej
