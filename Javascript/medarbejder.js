@@ -22,3 +22,10 @@ function toggleTheme() {
     body.style.backgroundImage = "url('../Images/Light-Mode.jpg')";
   }
 }
+
+
+// Håndter klikbegivenheden for "0" under "Nye feedback"
+document.getElementById('newFeedbackCount').addEventListener('click', function() {
+  // Omdiriger til feedback.html
+  window.location.href = 'feedback.html';
+});
