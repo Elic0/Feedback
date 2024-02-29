@@ -28,19 +28,18 @@ body {
   
 }
 
-header,
 footer {
   padding: 9px;
   text-align: center;
 }
 
 header {
-  background-color: rgba(0,  51,  102,  0.96);
+  background-color: rgba(0, 51, 102, 0.96);
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:  10px  20px;
+  padding: 10px 20px; 
 }
 
 header img {
@@ -58,6 +57,13 @@ header img {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:  100%; 
 }
 
 h1 {

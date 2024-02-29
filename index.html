@@ -9,29 +9,29 @@
   <link rel="stylesheet" href="CSS/style.css">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <?php include 'feedback.php'; ?>
 </head>
 
 <body class="dark-theme">
 
-  <body class="dark-theme"> 
-    <header>
-      <img src="images/Mercantec-Logo.png" alt="Mercantec Logo">
-      <div class="button-container">
-        <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()">
-          <i class="gg-sun"></i>
-        </button>
-        
-        <button type="button" id="loginButton" class="login-button" onclick="showLoginPopup()">
-          <ion-icon name="enter-outline"></ion-icon>
-        </button>
-      </div>
-    </header>
+  <header>
+    <img src="images/Mercantec-Logo.png" alt="Mercantec Logo">
+    <div class="button-container">
+      <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()">
+        <i class="gg-sun"></i>
+      </button>
+      
+      <button type="button" id="loginButton" class="login-button" onclick="showLoginPopup()">
+        <ion-icon name="enter-outline"></ion-icon>
+      </button>
+    </div>
+  </header>
 
   <main>
     <div class="container">
       <form id="feedbackForm">
 
-        <h1>Feedback for: (Hjemmesidenavn)</h1>
+        <h1>Feedback for: <?php echo isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : 'Unknown website'; ?></h1>
 
         <label for="subject">Kategori</label>
         <select id="subject" name="subject" required>
