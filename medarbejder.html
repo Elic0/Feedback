@@ -2,20 +2,20 @@
 <html lang="da">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mercantec - Medarbejder</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <link rel="stylesheet" href="CSS/medarbejer.css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Mercantec - Medarbejder</title>
+ <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+ <link rel="stylesheet" href="CSS/medarbejer.css">
+ <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+ <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body class="dark-theme">
   
-  <header>
+ <header>
     <nav>
       <img src="images/Mercantec-Logo.png" alt="Mercantec Logo">
       <div class="button-container">
@@ -27,15 +27,9 @@
         </button>
       </div>
     </nav>
-  </header>
+ </header>
 
-  <a href="index.html" class="feedback-link">
-    <img src="Images/Feedback-icon.png" alt="Feedback">
-  </a>
-  
-  
-
-  <main>
+ <main>
     <section class="projects-section">
       <h1>Dine Projekter</h1>
       <hr class="underline">
@@ -60,7 +54,6 @@
       <h2>7</h2>
     </section>
     
-    
     <section class="soc-projects-section">
       <h1>SOC Projekter</h1>
       <hr class="underline">
@@ -73,9 +66,17 @@
       <h2>Hjemmeside-7</h2>
       <h2>Hjemmeside-8</h2>
     </section>
-  </main>
+ </main>
  
-  <script src="Javascript/medarbejder.js"></script>
+ <script>
+  fetch('feedback.php')
+   .then(response => response.text())
+   .then(html => {
+      document.body.insertAdjacentHTML('beforeend', html);
+   })
+   .catch(err => console.warn('Something went wrong.', err));
+  </script>
+ <script src="Javascript/medarbejder.js"></script>
 </body>
 
 </html>

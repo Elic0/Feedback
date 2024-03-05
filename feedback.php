@@ -1,33 +1,30 @@
 <?php
-
+phpinfo();
 ?>
 <style>
- .button-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
- }
+.feedback-link {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 350px;
+  right: -97px;
+  z-index: 999;
+}
 
- .feedback-link {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
- }
+.feedback-link img {
+    width: 200px; 
+    height: auto; 
+    transform: rotate(270deg); 
+}
 
- .feedback-link img {
-    width: 50px;
-    height: auto;
-    transform: rotate(270deg);
- }
-
- .feedback-link:hover {
+.feedback-link:hover {
     opacity: 1;
- }
+}
 </style>
 
-<div class="button-container">
+<div class="feedback-container">
  <a href="index.html" class="feedback-link">
     <img src="../Images/Feedback-icon.png" alt="Feedback">
  </a>

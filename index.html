@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="CSS/style.css">
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <?php include 'feedback.php'; ?>
 </head>
 
 <body class="dark-theme">
@@ -30,9 +29,6 @@
   <main>
     <div class="container">
       <form id="feedbackForm">
-
-        <h1>Feedback for: <?php echo isset($_SERVER['HTTP_REFERER']) ? htmlspecialchars($_SERVER['HTTP_REFERER']) : 'Unknown website'; ?></h1>
-
         <label for="subject">Kategori</label>
         <select id="subject" name="subject" required>
           <option value="" disabled selected hidden>Vælg en kategori</option>
@@ -43,8 +39,7 @@
           <option value="Sikkerhed">Sikkerhed</option>
           <option value="Andet">Andet</option>
         </select>
-        
-
+    
         <label for="feedback">Feedback-besked</label>
         <textarea id="feedback" name="feedback" placeholder="Skriv din besked" rows="8" required></textarea>
 
@@ -94,5 +89,4 @@
 
   <script src="Javascript/script.js"></script>
 </body>
-
 </html>
