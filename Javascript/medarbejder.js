@@ -29,3 +29,17 @@ document.getElementById('newFeedbackCount').addEventListener('click', function()
   // Omdiriger til feedback.html
   window.location.href = 'feedback.html';
 });
+
+// Håndter klikbegivenheden for "32" under "Alle feedback"
+document.getElementById('allFeedbackCount').addEventListener('click', function() {
+  // Omdiriger til feedback.html
+  window.location.href = 'all-Feedback.html';
+});
+
+
+// Håndter klikbegivenheden for "7" under "Alle Projekter"
+document.getElementById('allProjectsCount').addEventListener('click', function() {
+  // Omdiriger til feedback.html
+  window.location.href = 'all-projects.html';
+});
+

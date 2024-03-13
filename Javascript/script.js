@@ -141,7 +141,7 @@ function displayPopup(message) {
 
   popupMessage.textContent = message;
   popup.style.display = 'block';
-  popup.style.zIndex = '1000'; // Sæt z-index for at sikre, at popupen vises foran login-popupen
+  popup.style.zIndex = '1000'; 
 
   // Lukker automatisk popup efter 3 sekunder
   setTimeout(function () {
@@ -193,7 +193,7 @@ function handleImageInput() {
   }
 }
 
-//Redirecter fra normal side til medarbejder side
+//Redirecter fra feedback side til medarbejder side
 function redirectMedarbejder() {
   window.location.href = 'medarbejder.html';
 }
