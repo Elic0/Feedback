@@ -1,8 +1,3 @@
-<html>
-<head>
-<title>Connecting to SQL Server in PHP</title>
-</head>
-<body>
 <?php
 $serverName = "(localdb)\\feedbackDB";
 $connectionOptions = array(
@@ -20,8 +15,11 @@ if ($conn === false) {
     // Connection successful message
     echo "Connected successfully";
 }
+
+
+
 // Close the connection
 sqlsrv_close($conn);
 ?>
-</body>
-</html>
+
+
