@@ -2,27 +2,34 @@
 // Include the connection file
 include 'Conn.php';
 
-// Get the POST data
-$data = json_decode(file_get_contents('php://input'), true);
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Hent data fra formularen
+    $subject = $_POST['subject'];
+    $feedback = $_POST['feedback'];
+    $email = $_POST['email'];
+    $allowContact = isset($_POST['contactCheckbox']) ? 1 : 0; // Konverterer checkbox til 1 eller 0
 
-// Retrieve form data
-$mail = $data['email'];
-$allowContact = $data['contactCheckbox'] ? 1 : 0;
-$topic = $data['subject'];
-$feedback = $data['feedback'];
+    // Process the image if required
+    $image = null; // Replace this with your image processing logic
 
-// Prepare and execute the SQL statement
-$tsql = "INSERT INTO feedback (Mail, AllowContact, Topic, Feedback) VALUES (?, ?, ?, ?)";
-$params = array($mail, $allowContact, $topic, $feedback);
+    // Call the stored procedure
+    $sql = "EXEC InsertFeedback @Mail=?, @AllowContact=?, @Topic=?, @FromWebsite=?, @Feedback=?, @Images=?";
+    $params = array($email, $contactCheckbox, $subject, $_SERVER['HTTP_REFERER'], $feedback, $image);
+    $stmt = sqlsrv_prepare($conn, $sql, $params);
+    
+    if (sqlsrv_execute($stmt)) {
+        // Success
+        echo "Feedback submitted successfully.";
+    } else {
+        // Error
+        echo "Error submitting feedback.";
+    }
 
-$stmt = sqlsrv_query($conn, $tsql, $params);
-
-if ($stmt === false) {
-    // Print detailed error information if execution fails
-    die(print_r(sqlsrv_errors(), true));
+    // Close the connection
+    sqlsrv_close($conn);
 } else {
-    // Send a response back to the client
-    echo json_encode(array('success' => true));
+    echo "Form not submitted.";
 }
 
 // Free statement and close connection
