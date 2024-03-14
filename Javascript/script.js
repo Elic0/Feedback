@@ -1,14 +1,18 @@
-// Submit formen for feedback (Hvad den sender fra hjemmesiden til en mail eller database)
 function submitFeedback() {
   const email = document.getElementById('email').value;
   const subject = document.getElementById('subject').value;
   const feedback = document.getElementById('feedback').value;
-  const form = document.getElementById('feedbackForm');
+  const contactCheckbox = document.getElementById('contactCheckbox').checked ? 1 : 0;
+  const acceptCheckbox = document.getElementById('acceptCheckbox').checked ? 1 : 0;
 
+  // Log the values of the form fields including category, contactCheckbox, and acceptCheckbox
+  console.log("Email:", email);
+  console.log("Subject:", subject);
+  console.log("Feedback:", feedback);
+  console.log("Contact Checkbox:", contactCheckbox);
+  console.log("Accept Checkbox:", acceptCheckbox);
 
-  if (email && document.getElementById('contactCheckbox').checked) {
-    // Email logikken skal ind her 
-  }
+  // Email logikken skal ind her 
 
   displayPopup("Tak for din feedback!");
 
@@ -16,188 +20,128 @@ function submitFeedback() {
   resetForm();
 }
 
-// Event for formen bliver sendt 
-document.addEventListener('DOMContentLoaded', function () {
+
+ 
+ // Function to reset form
+ function resetForm() {
   const form = document.getElementById('feedbackForm');
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    submitFeedback();
-
-    // Log i konsolen om formularen blev sendt
-    console.log("Formularen blev sendt!");
-  });
-});
-
-
-
-// Nulstil formular
-function resetForm() {
-  const form = document.getElementById('feedbackForm');
-  form.reset(); // Nulstil alle inputfelter
-
-  // Nulstil kontaktcheckbox
+  form.reset(); // Reset all input fields
+ 
+  // Reset contact checkbox
   const contactCheckbox = document.getElementById('contactCheckbox');
   if (contactCheckbox) {
-    contactCheckbox.checked = false;
+     contactCheckbox.checked = false;
   }
-}
-
-// Viser popup funktionen
-function displayPopup(message) {
+ }
+ 
+ // Function to display popup
+ function displayPopup(message) {
   const popup = document.getElementById('popup');
   const popupMessage = document.getElementById('popupMessage');
-
+ 
   popupMessage.textContent = message;
   popup.style.display = 'block';
-
-  // Lukker automatisk popup efter 3 sekunder
+ 
+  // Automatically close popup after 3 seconds
   setTimeout(function () {
-    closePopup();
+     closePopup();
   }, 3000);
-}
-
-// Luk popup funktion
-function closePopup() {
+ }
+ 
+ // Function to close popup
+ function closePopup() {
   const popup = document.getElementById('popup');
   popup.style.display = 'none';
-}
-
-// Dark & Light mode 
-function toggleTheme() {
+ }
+ 
+ // Function to toggle theme
+ function toggleTheme() {
   const body = document.body;
   const themeToggle = document.getElementById('themeToggle');
   const icon = themeToggle.querySelector('i');
-
+ 
   body.classList.toggle('dark-theme');
   body.classList.toggle('light-theme');
-
+ 
   if (body.classList.contains('dark-theme')) {
-    icon.className = 'gg-sun'; 
+     icon.className = 'gg-sun'; 
   } else {
-    icon.className = 'gg-moon'; 
+     icon.className = 'gg-moon'; 
   }
-}
-
-
-
-
-// Bestemmer om email-checkbox kommer op eller ej
-function toggleContactCheckbox() {
+ }
+ 
+ // Function to toggle contact checkbox visibility
+ function toggleContactCheckbox() {
   const emailInput = document.getElementById('email');
   const contactCheckboxContainer = document.getElementById('contactCheckboxContainer');
-
+ 
   if (emailInput.value.trim() !== '') {
-    contactCheckboxContainer.style.display = 'flex';
+     contactCheckboxContainer.style.display = 'flex';
   } else {
-    contactCheckboxContainer.style.display = 'none';
+     contactCheckboxContainer.style.display = 'none';
   }
-}
-
-// Event for formen bliver sendt 
-document.addEventListener('DOMContentLoaded', function () {
+ }
+ 
+ // Event for form submission
+ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('feedbackForm');
   form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    submitFeedback();
+     event.preventDefault();
+     submitFeedback();
   });
-});
-
-document.getElementById('imageInput').addEventListener('change', handleImageInput);
-
-function handleImageInput() {
-  const imageInput = document.getElementById('imageInput');
-  const attachedImageContainer = document.getElementById('attachedImageContainer');
-
-  const selectedImage = imageInput.files[0];
-
-  if (selectedImage) {
-    const imageUrl = URL.createObjectURL(selectedImage);
-    
-    console.log("Attached Image URL:", imageUrl);
-  }
-}
-
-// Submit login form
-function submitLoginForm() {
+ });
+ 
+ // Function to submit login form
+ function submitLoginForm() {
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-
+ 
   // Check username and password
   if (username === "admin" && password === "MercAdmin123") {
-    // Redirect to medarbejder.html if credentials are correct
-    window.location.href = 'medarbejder.html';
+     // Redirect to medarbejder.html if credentials are correct
+     window.location.href = 'medarbejder.html';
   } else {
-    // Display error message if credentials are incorrect
-    displayPopup("Forkert brugernavn eller adgangskode.");
-    focusLoginInput();
+     // Display error message if credentials are incorrect
+     displayPopup("Forkert brugernavn eller adgangskode.");
+     focusLoginInput();
   }
-}
-
-// Fokus på login inputfelt
-function focusLoginInput() {
+ }
+ 
+ // Function to focus on login input field
+ function focusLoginInput() {
   document.getElementById('username').focus();
-}
-
-// Viser popup funktionen
-function displayPopup(message) {
-  const popup = document.getElementById('popup');
-  const popupMessage = document.getElementById('popupMessage');
-
-  popupMessage.textContent = message;
-  popup.style.display = 'block';
-  popup.style.zIndex = '1000'; 
-
-  // Lukker automatisk popup efter 3 sekunder
-  setTimeout(function () {
-    closePopup();
-  }, 3000);
-}
-
-// Luk popup funktion
-function closePopup() {
-  const popup = document.getElementById('popup');
-  popup.style.display = 'none';
-}
-
-// Popup for login
-function showLoginPopup() {
+ }
+ 
+ // Function to show login popup
+ function showLoginPopup() {
   const loginPopup = document.getElementById('loginPopup');
   loginPopup.style.display = 'block';
-}
-
-function hideLoginPopup() {
+ }
+ 
+ function hideLoginPopup() {
   const loginPopup = document.getElementById('loginPopup');
   loginPopup.style.display = 'none';
-}
-
-document.getElementById('loginButton').addEventListener('click', showLoginPopup);
-document.getElementById('loginPopup').querySelector('button').addEventListener('click', hideLoginPopup);
-
-// Event for formen bliver sendt 
-document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('feedbackForm');
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    submitFeedback();
-  });
-});
-
-document.getElementById('imageInput').addEventListener('change', handleImageInput);
-
-function handleImageInput() {
+ }
+ 
+ document.getElementById('loginButton').addEventListener('click', showLoginPopup);
+ document.getElementById('loginPopup').querySelector('button').addEventListener('click', hideLoginPopup);
+ document.getElementById('imageInput').addEventListener('change', handleImageInput);
+ 
+ function handleImageInput() {
   const imageInput = document.getElementById('imageInput');
   const attachedImageContainer = document.getElementById('attachedImageContainer');
-
+ 
   const selectedImage = imageInput.files[0];
-
+ 
   if (selectedImage) {
-    const imageUrl = URL.createObjectURL(selectedImage);
-    
-    console.log("Attached Image URL:", imageUrl);
+     const imageUrl = URL.createObjectURL(selectedImage);
+     
+     console.log("Attached Image URL:", imageUrl);
   }
-}
-
-//Redirecter fra feedback side til medarbejder side
-function redirectMedarbejder() {
+ }
+ 
+ // Function to redirect from feedback page to employee page
+ function redirectMedarbejder() {
   window.location.href = 'medarbejder.html';
-}
+ }
+ 
