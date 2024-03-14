@@ -3,12 +3,12 @@
 include 'Conn.php';
 
 // Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    // Get form data
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Hent data fra formularen
     $subject = $_POST['subject'];
     $feedback = $_POST['feedback'];
-    $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $contactCheckbox = isset($_POST['contactCheckbox']) ? 1 : 0;
+    $email = $_POST['email'];
+    $allowContact = isset($_POST['contactCheckbox']) ? 1 : 0; // Konverterer checkbox til 1 eller 0
 
     // Process the image if required
     $image = null; // Replace this with your image processing logic
