@@ -1,34 +1,38 @@
 <?php
-// Include your database connection file
+// Include the connection file
 include 'Conn.php';
 
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Hent data fra formularen
-    $subject = $_POST['subject'];
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $mail = $_POST['email'];
+    $allowContact = isset($_POST['contactCheckbox']) ? 1 : 0; // Convert checkbox value to BIT
+    $topic = $_POST['subject'];
     $feedback = $_POST['feedback'];
-    $email = $_POST['email'];
-    $allowContact = isset($_POST['contactCheckbox']) ? 1 : 0; // Konverterer checkbox til 1 eller 0
+    $images = null; // Replace null with the actual binary image data if applicable
 
-    // Process the image if required
-    $image = null; // Replace this with your image processing logic
+    // Prepare and execute the stored procedure
+    $tsql = "{CALL InsertFeedback (?, ?, ?, ?, ?)}";
+    $params = array(
+        array($mail, SQLSRV_PARAM_IN),
+        array($allowContact, SQLSRV_PARAM_IN),
+        array($topic, SQLSRV_PARAM_IN),
+        array($feedback, SQLSRV_PARAM_IN),
+        array($images, SQLSRV_PARAM_IN)
+    );
 
-    // Call the stored procedure
-    $sql = "EXEC InsertFeedback @Mail=?, @AllowContact=?, @Topic=?, @FromWebsite=?, @Feedback=?, @Images=?";
-    $params = array($email, $contactCheckbox, $subject, $_SERVER['HTTP_REFERER'], $feedback, $image);
-    $stmt = sqlsrv_prepare($conn, $sql, $params);
-    
-    if (sqlsrv_execute($stmt)) {
-        // Success
-        echo "Feedback submitted successfully.";
+    // Execute the stored procedure
+    $stmt = sqlsrv_query($conn, $tsql, $params);
+
+    // Check if the execution was successful
+    if ($stmt === false) {
+        // Print detailed error information if execution fails
+        die(print_r(sqlsrv_errors(), true));
     } else {
-        // Error
-        echo "Error submitting feedback.";
+        echo "Feedback inserted successfully!";
     }
 
-    // Close the connection
+    // Free statement and close connection
+    sqlsrv_free_stmt($stmt);
     sqlsrv_close($conn);
-} else {
-    echo "Form not submitted.";
 }
 ?>
