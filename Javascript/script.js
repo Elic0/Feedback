@@ -5,16 +5,6 @@ function submitFeedback() {
   const feedback = document.getElementById('feedback').value;
   const form = document.getElementById('feedbackForm');
 
-  // Pop-up (Hvis nogle felter ikke er udfyldt)
-  if (subject === "") {
-    displayPopup("Du skal vælge en kategori.");
-    return;
-  }
-
-  if (feedback === "") {
-    displayPopup("Du skal skrive en feedback-besked.");
-    return;
-  }
 
   if (email && document.getElementById('contactCheckbox').checked) {
     // Email logikken skal ind her 
@@ -25,6 +15,20 @@ function submitFeedback() {
   // Nulstil formular
   resetForm();
 }
+
+// Event for formen bliver sendt 
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('feedbackForm');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    submitFeedback();
+
+    // Log i konsolen om formularen blev sendt
+    console.log("Formularen blev sendt!");
+  });
+});
+
+
 
 // Nulstil formular
 function resetForm() {
@@ -197,4 +201,3 @@ function handleImageInput() {
 function redirectMedarbejder() {
   window.location.href = 'medarbejder.html';
 }
-
