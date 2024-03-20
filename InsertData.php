@@ -1,31 +1,31 @@
 <?php
-// Include the connection file
-include 'Conn.php';
+// Database connection
+$servername = "192.168.116.50";
+$username = "feedback";
+$password = "password1"; 
+$dbname = "feedbackDB"; 
 
-// Get the POST data
-$data = json_decode(file_get_contents('php://input'), true);
-
-// Retrieve form data
-$mail = $data['email'];
-$allowContact = $data['contactCheckbox'] ? 1 : 0;
-$topic = $data['subject'];
-$feedback = $data['feedback'];
-
-// Prepare and execute the SQL statement
-$tsql = "INSERT INTO feedback (Mail, AllowContact, Topic, Feedback) VALUES (?, ?, ?, ?)";
-$params = array($mail, $allowContact, $topic, $feedback);
-
-$stmt = sqlsrv_query($conn, $tsql, $params);
-
-if ($stmt === false) {
-    // Print detailed error information if execution fails
-    die(print_r(sqlsrv_errors(), true));
-} else {
-    // Send a response back to the client
-    echo json_encode(array('success' => true));
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
-// Free statement and close connection
-sqlsrv_free_stmt($stmt);
-sqlsrv_close($conn);
+// Get form data
+$topic = $_POST['subject']; 
+$email = $_POST['email'];
+$message = $_POST['feedback'];
+$allowContact = isset($_POST['contactCheckbox']) ? '1' : '0'; // 
+
+
+// Insert data into database
+$sql = "INSERT INTO feedbackInfo (topic, mail, feedback, allowContact) VALUES ('$topic', '$email', '$message', '$allowContact')";
+
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>
