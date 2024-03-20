@@ -206,7 +206,7 @@ main.dark-theme {
 }
 
 body.light-theme {
-  background-image: url('../images/Light-Mode.jpg');
+  background-image: url('../Images/Light-Mode.jpg');
   background-color: #f4f4f4;
   color: #fff;
 }
