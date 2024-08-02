@@ -1,17 +1,19 @@
 input::placeholder {
   color: #aaa;
+   transition: color 0.3s ease;
 }
 
 input:focus::placeholder {
   color: transparent;
 }
 
+/* Generelle stilarter */
 html {
   height: 100%;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   position: relative;
   margin: 0;
   padding: 0;
@@ -25,21 +27,29 @@ body {
   min-height: 100%;
   background-color: #f4f4f4;
   color: #333;
-  
 }
 
 footer {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400; 
+    font-style: normal; 
   padding: 9px;
   text-align: center;
+  background: linear-gradient(45deg, rgba(4, 5, 29, 0.96) 0%, #2b566e 90%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #e8e8e8;
+  content: "\2024"; 
 }
 
 header {
-  background-color: rgba(0, 51, 102, 0.96);
+  background: linear-gradient(45deg, rgba(4, 5, 29, 0.96) 0%, #2b566e 90%);
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px; 
+  padding: 3px 1px; 
 }
 
 header img {
@@ -70,6 +80,13 @@ h1 {
   margin: auto;
 }
 
+h3 {
+  position: relative;
+  margin: -28px 0 0 -5px;
+  width: 250px;
+  
+}
+
 .theme-toggle,
 .login-button {
   background-color: transparent;
@@ -89,19 +106,9 @@ h1 {
   transform: rotate(180deg); 
 }
 
-
 .theme-toggle:hover,
 .login-button:hover {
-  background-color: #002852;
-}
-
-footer {
-  margin-top: auto;
-  color: #e8e8e8;  
-  background-color: rgba(0, 51, 102, 0.96);
-  left: 0;
-  right: 0;
-  bottom: 0;
+  background-color: #4C6885;
 }
 
 main {
@@ -116,7 +123,6 @@ main {
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-
 
 .container {
   margin: 0 auto;
@@ -179,9 +185,10 @@ footer p {
 }
 
 body.dark-theme {
-  background-image: url('../Images/Dark-Mode.jpg');
+  background-image: url('../images/Dark-Mode.jpg');
   background-color: #333;
   color: #fff;
+  backdrop-filter: blur(1.5px); 
 }
 
 body.dark-theme .container {
@@ -206,9 +213,10 @@ main.dark-theme {
 }
 
 body.light-theme {
-  background-image: url('../Images/Light-Mode.jpg');
+  background-image: url('../images/Light-Mode.jpg');
   background-color: #f4f4f4;
   color: #fff;
+  backdrop-filter: blur(1.5px); 
 }
 
 body.light-theme label {
@@ -268,34 +276,64 @@ button:hover {
   background-color: #001f3f;
 }
 
-
 #contactCheckboxContainer {
-  display: flex;
-  align-items: center;
-}
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
 #contactCheckboxContainer label {
- white-space: nowrap;
- overflow-wrap: break-word;
- display: flex;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  display: flex;
   align-items: center; 
-  margin-right: 10px;
+  margin-right: 0px;
   color: #003366;
 }
 
 #contactCheckboxContainer input[type="checkbox"]
 {
- margin-bottom: 60px;
- position: relative;
- top: 28px; 
- right: 300px;
+  margin-bottom: 20px;
+  position: relative; 
+  right: 235px;
+  top: -25px;
 }
 
 #acceptCheckbox {
   position: relative;
-  bottom: 23px;
   right: 150px;
+  top: 10px;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+  /* Ensure checkboxes are properly aligned */
+  #contactCheckboxContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+#contactCheckboxContainer input[type="checkbox"]
+{
+  margin-bottom: 20px;
+  position: relative; 
+  right: 0px;
+}
+
+
+  /* Adjust margin for the accept checkbox */
+  #acceptCheckbox {
+    margin-top: 10px;
+	right: -250px;
+  }
+
+  /* Ensure labels don't overlap with checkboxes */
+  label {
+    margin-bottom: 10px;
+	margin-right: 10px;
+	width: auto;
+  }
+}
+
 
 #loginPopup {
   display: none;
@@ -317,15 +355,11 @@ button:hover {
   top: -10px;
   right: 15px;
   font-size: 24px;
-  color: #003366;
+  color: #ba2121;
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
-}
-
-#loginPopup .close-button:hover {
-  color: #013973;
 }
 
 #loginPopup label {
@@ -356,12 +390,6 @@ button:hover {
   margin-top: 20px;
   display: block;
 }
-
-#loginPopup button:hover {
-  background-color: #001f3f;
-}
-
-
 
 .gg-sun {
   box-sizing: border-box;
@@ -407,7 +435,6 @@ button:hover {
   transform: rotate(45deg)
 }
 
-
 .gg-moon,
 .gg-moon::after {
     display: block;
@@ -432,4 +459,127 @@ button:hover {
     box-shadow: 0 0 0 2px;
     top: 8px;
     left: 2px
+}
+
+.btn-1,
+.btn-1 *,
+.btn-1 :after,
+.btn-1 :before,
+.btn-1:after,
+.btn-1:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+.btn-1 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+  text-transform: uppercase;
+}
+.btn-1:disabled {
+  cursor: default;
+}
+.btn-1:-moz-focusring {
+  outline: auto;
+}
+.btn-1 svg {
+  display: block;
+  vertical-align: middle;
+}
+.btn-1 [hidden] {
+  display: none;
+}
+.btn-1 {
+  border-radius: 99rem;
+  border-width: 2px;
+  padding: 0.8rem 3rem;
+}
+.btn-1:hover {
+  color: #999;
+}
+
+@media only screen and (max-width: 600px) {
+  /* Adjustments for smaller screens */
+  body {
+    font-size: 15px; /* Adjust font size for better readability */
+	position: relative; /* Set position to relative */
+  }
+  
+  main {
+    padding: 15px; /* Decrease padding for content */
+    border-radius: 3; /* Remove border radius */
+    max-width: 90%; /* Make sure the main content doesn't exceed the screen width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    overflow-x: hidden; /* Hide horizontal overflow */
+  }
+  
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center align buttons */
+    gap: 10px; /* Add some spacing between buttons */
+  }
+  
+  .theme-toggle {
+	   display: none;
+  }
+
+  .login-button {
+    font-size: 18px; /* Reduce font size of login button */
+    padding: 8px 16px; /* Adjust padding for login button */
+    margin-top: 10px; /* Adjust vertical alignment */
+  }
+  
+  header img {
+    max-height: 40px; /* Decrease logo size */
+  }
+  
+  header {
+    width: 100%; /* Full width */
+    height: 60px;
+    padding: 0 15px; /* Add padding to accommodate content */
+  }
+  
+  footer {
+    display: none; /* Hide the footer */
+  }
+  
+  #contactCheckboxContainer input[type="checkbox"] {
+    position: static; /* Reset position */
+    margin-bottom: 10px; /* Adjust margin */
+    right: 0; /* Reset right position */
+  }
+  
+  #acceptCheckbox {
+    margin-top: 10px; /* Adjust margin */
+    left: 0; /* Reset left position */
+    top: 38px;
+  }
+  
+  label {
+    margin-bottom: 5px; /* Decrease margin */
+    margin-right: 0; /* Reset margin */
+    width: auto; /* Allow label to wrap */
+  }
+}
+
+
+.terms-of-service {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.terms-of-service:hover {
+  color: #0000B2; 
 }
